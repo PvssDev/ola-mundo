@@ -50,5 +50,8 @@ nav {
     box-shadow: 0 0 15px 5px rgb(148, 78, 253, 10);
   }
   
-
+.gerador {
+  border-radius: 5%;
+  display: inline;
+}
   
