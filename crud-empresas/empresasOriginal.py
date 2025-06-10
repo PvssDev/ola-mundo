@@ -71,18 +71,20 @@ def editar_empresas(nome):
 def ver_empresas():
     dados = carregar_empresas()
     concluido = False
-    for empresa in dados:
-        print(f'\nEssa é a empresa {empresa['nome']}:')
-        print(f'\nNome: {empresa['nome']}')
-        print(f'Cnpj: {empresa['cnpj']}')
-        print(f'Endereço: {empresa['endereço']}')
-        print(f'Gmail: {empresa['gmail']}')
-        print(f'Contato: {empresa['contato']}')
-        print(f'Senha: {empresa['senha']}')
+    if dados.count != 0:
+        for empresa in dados:
+            print(f'\nEssa é a empresa {empresa['nome']}:')
+            print(f'\nNome: {empresa['nome']}')
+            print(f'Cnpj: {empresa['cnpj']}')
+            print(f'Endereço: {empresa['endereço']}')
+            print(f'Gmail: {empresa['gmail']}')
+            print(f'Contato: {empresa['contato']}')
+            print(f'Senha: {empresa['senha']}')
         
+            concluido = True
 
-        concluido = True
-    print('\nEssas são as empresas')
+    if concluido == True:
+        print('\nEssas são as empresas')
     
     if concluido == False:
         print('Não tem empresas registradas')

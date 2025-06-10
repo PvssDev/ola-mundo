@@ -1,18 +1,10 @@
 [
         {
-                "nome": "p",
-                "cnpj": "22",
-                "endereço": "11",
-                "gmail": "11",
-                "contato": "11",
-                "senha": "11"
-        },
-        {
-                "nome": "ppp",
-                "cnpj": "44",
-                "endereço": "44",
-                "gmail": "555",
-                "contato": "44",
-                "senha": "44"
+                "nome": "AAA",
+                "cnpj": "000",
+                "endereço": "000000-000",
+                "gmail": "AAA@gmail.com",
+                "contato": "0000000000",
+                "senha": "000"
         }
 ]
