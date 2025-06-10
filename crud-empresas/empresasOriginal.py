@@ -80,9 +80,9 @@ def ver_empresas():
         print(f'Contato: {empresa['contato']}')
         print(f'Senha: {empresa['senha']}')
         
-        print('\nEssas são as empresas')
 
         concluido = True
+    print('\nEssas são as empresas')
     
     if concluido == False:
         print('Não tem empresas registradas')
@@ -111,7 +111,7 @@ def excluir_empresas(nome):
         print('Não foi possivel encontrar sua empresa!')
 
 def menu():
-    sleep(3)
+    sleep(1.5)
     print('\n------Empresas------')
     print('\n 1. Ver Empresas')
     print(' 2. Criar Empresas')
@@ -122,22 +122,24 @@ def menu():
 def main():
     while True:
         menu()
-        escolha = int(input('Escolha uma das opções acima: '))
+        try:
+            escolha = int(input('Escolha uma das opções acima: '))
+            match escolha:
+                case 1:
+                    ver_empresas()
+                case 2:
+                    criar_empresas()
+                case 3:
+                    nome = input('Digite o nome da empresa que deseja editar: ')
+                    editar_empresas(nome)
+                case 4:
+                    nome = input('Digite o nome da empresa que deseja excluir: ')
+                    excluir_empresas(nome)
+                case 5:
+                    break
+                case __:
+                    print('Opção invalida!')
 
-        match escolha:
-            case 1:
-                ver_empresas()
-            case 2:
-                criar_empresas()
-            case 3:
-                nome = input('Digite o nome da empresa que deseja editar: ')
-                editar_empresas(nome)
-            case 4:
-                nome = input('Digite o nome da empresa que deseja excluir: ')
-                excluir_empresas(nome)
-            case 5:
-                break
-            case __:
-                print('Opção invalida!')
-
+        except(ValueError):
+            print("opção invalida")
 main()
