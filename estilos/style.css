@@ -12,6 +12,13 @@
     background-color: rgb(51, 113, 149);
 }
 
+.barra-pesquisas{
+    display: flex;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: rgb(84, 171, 221);
+}
+
 .menu{
     display: none;
     list-style: none;
@@ -19,14 +26,27 @@
     transition: display 0.5s ease;
 }
 
+.menu li{
+    padding: 5px 20px;
+}
+
+.menu a{
+    text-decoration: none;
+    color: rgb(51, 113, 149);
+    transition: text 0.5s ease;
+    
+}
+
 .botao{
     justify-content: flex-start;
+    cursor: pointer;
     margin: 2px 10px;
     padding: 5px;
     border-style: none;
     background-color: rgb(51, 113, 149);
     border-radius: 100%;
     transition: background-color 0.5s ease;
+    transition: 0.5s ease
 }
 
 .botao img{
@@ -40,6 +60,10 @@
 .animacao:hover .menu{
     display: block;
     justify-content: center;
+}
+
+.animacao:hover .menu li a{
+    color: aliceblue;
 }
 
 .cabeçalho-destaque{
