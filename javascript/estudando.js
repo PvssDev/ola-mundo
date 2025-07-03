@@ -1,1 +1,4 @@
-console.log("ola mundo")
+let num1
+let num2
+
+num1 = input
