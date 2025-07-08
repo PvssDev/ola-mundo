@@ -1,15 +1,11 @@
-let idadeComprador = prompt("Digite a sua iadade:")
+let valorDasCamisetas = prompt("Digite o valor das camisetas que serão compradas:")
+let valorDasCartolinas = prompt("Digite o valor das cartolinas: ")
+let quantidadeDasCartolinas = prompt("Digite a quantidade de cartolinas: ")
+let valorDasCanetas = prompt("Digite o valor das canetas: ")
+let quantidadeDasCanetas = prompt("digite a quantidade de canetas: ")
 
-if (idadeComprador >= 18){
-    alert(`você é maior de idade seja bem-vindo`)
-    
-}else{
-    let acompanhado = prompt("Você está acompanhado? [s/n]")
+resultadoCamisetas = valorDasCamisetas * 5
+resultadoCartolinas = valorDasCartolinas * quantidadeDasCartolinas
+resultadoCanetas = valorDasCanetas * quantidadeDasCanetas
 
-    if(acompanhado == 's'){
-        alert(`você é menor de idade, porém está acompanhado. Seja bem-vindo`)
-
-    }else{
-        alert(`você é menor de idade, sem acompanhante. me desculpe`)
-    }
-}
+alert("O valor necessario para comprar as camisetas é de: ")
