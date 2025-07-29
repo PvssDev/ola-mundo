@@ -73,7 +73,15 @@ def ver_empresas():
     concluido = False
     if dados.count != 0:
         for empresa in dados:
-            print(f'\nEssa é a empresa {empresa['nome']}:')
+            print('-----📈 Ver Empresas 📉------')
+            sleep(1.5)
+
+            print(f'\n➡️  Temos {len(dados)} empresa(s) registrada(s) no programa')
+            sleep(1.5)
+
+            print(f'\n➡️  Essa é a empresa {empresa['nome']}:')
+            sleep(1)
+
             print(f'\nNome: {empresa['nome']}')
             print(f'Cnpj: {empresa['cnpj']}')
             print(f'Endereço: {empresa['endereço']}')
@@ -84,10 +92,13 @@ def ver_empresas():
             concluido = True
 
     if concluido == True:
-        print('\nEssas são as empresas')
+        print('\n➡️  Essas são as empresas registradas')
+        sleep(2)
     
     if concluido == False:
-        print('Não tem empresas registradas')
+        print('❌  Não temos empresas registradas registradas ainda!')
+        print('❌  Por que você não tenta?')
+        sleep(2)
 
 def excluir_empresas(nome):
     dados = carregar_empresas()
@@ -114,14 +125,19 @@ def excluir_empresas(nome):
 
 def menu():
     sleep(1.5)
-    print('\n------Empresas------')
-    print('\n 1. Ver Empresas')
-    print(' 2. Criar Empresas')
-    print(' 3. Editar Empresas')
-    print(' 4. Excluir Empresas')
-    print(' 5. Sair do Programa')
+    print('\n-----📈 Empresas 📉-----')
+    print('\n 1.🟦 Ver Empresas')
+    print(' 2.🟩 Criar Empresas')
+    print(' 3.🟧 Editar Empresas')
+    print(' 4.🟥 Excluir Empresas')
+    print(' 5.💾 Sair do Programa')
 
 def main():
+    print('🗣️  Bem-vindo ao CRUD Empresas')
+    sleep(1.5)
+    print('🗣️  Um codigo feito para aprender um pouco de python')
+    sleep(1.5)
+    print('🗣️  Aproveite')
     while True:
         menu()
         try:
