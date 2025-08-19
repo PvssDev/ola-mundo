@@ -35,38 +35,73 @@ def criar_empresas():
     escrever_empresas(dados)
 
     if escrever_empresas(dados) == False:
-        print('Não foi possivel adicionar sua empresa')
+        print('\n❌  Não foi possivel adicionar sua empresa')
     else:
-        print('Empresa adicionada com sucesso!')
+        print('\n✅  Empresa adicionada com sucesso!')
 
-def editar_empresas(nome):
+def editar_empresas():
     dados = carregar_empresas()
     concluido = False
-    for empresa in dados:
-        if empresa['nome'] == nome:
-            
-            print(f'\nEssa é a empresa {empresa['nome']}:')
-            print(f'\n1. Nome: {empresa['nome']}')
-            print(f'2. Cnpj: {empresa['cnpj']}')
-            print(f'3. Endereço: {empresa['endereço']}')
-            print(f'4. Gmail: {empresa['gmail']}')
-            print(f'5. Contato: {empresa['contato']}')
-            print(f'6. Senha: {empresa['senha']}')
 
-            escolha_edicao = input('Escolha qual opção alterar, exemplo: "nome" ou "contato":' ).strip().lower()
+    sleep(1)
+    print('\n-----📈 Editar Empresas 📉------')
 
-            for chave in empresa:
-                if escolha_edicao == chave:
-                    empresa[escolha_edicao] = input('Digite a sua alteração')
+    while not concluido:
+        sleep(1)
+        nome = input('\n➡️  Digite o nome da empresa que deseja editar: ')
 
-                    concluido = True
-                    escrever_empresas(dados)
-                    break
+        for empresa in dados:
+            if empresa['nome'] == nome:
                 
-    if concluido == False:
-        print('Não foi possivel concluir')
-    else:
-        print('Edição concluida com sucesso!')
+                sleep(1)
+                print(f'\nEssa é a empresa {empresa['nome']}:')
+                sleep(0.5)
+                print(f'\n1. Nome: {empresa['nome']}')
+                sleep(0.5)
+                print(f'2. Cnpj: {empresa['cnpj']}')
+                sleep(0.5)
+                print(f'3. Endereço: {empresa['endereço']}')
+                sleep(0.5)
+                print(f'4. Gmail: {empresa['gmail']}')
+                sleep(0.5)
+                print(f'5. Contato: {empresa['contato']}')
+                sleep(0.5)
+                print(f'6. Senha: {empresa['senha']}')
+
+
+                while not concluido:
+                    sleep(1)
+                    escolha_edicao = input('\n➡️  Escolha qual opção alterar, exemplo: "nome" ou "contato": ' ).strip().lower()
+
+                    for chave in empresa:
+
+                        if escolha_edicao == chave:
+                            sleep(1)
+                            print(f'\n➡️  O {escolha_edicao} de {empresa['nome']} é: {empresa[escolha_edicao]}')
+                            sleep(1)
+                            empresa[escolha_edicao] = input('\n➡️  Digite a sua alteração: ')
+
+                            escrever_empresas(dados)
+                            concluido = True
+
+                    if concluido == False:
+                        sleep(1)
+                        print(f'\n❌  Opção não identificada, Tente verificar se a opção foi Digitada corretamente')
+        
+        if concluido == True:
+            print('\n✅  Alteração concluida com sucesso!')
+            
+        else:
+                
+            print('\n❌  Empresa não encontrada! Tente verificar se o nome foi Digitado corretamente')
+            sleep (1.5)
+            print('\n➡️  Nomes de empresas registradas:\n')
+            sleep(1.5)
+         
+            for empresa in dados:
+                print(f'{empresa['nome']}')
+                sleep(0.5)
+                
 
 def ver_empresas():
     dados = carregar_empresas()
@@ -126,6 +161,7 @@ def excluir_empresas(nome):
 def menu():
     sleep(1.5)
     print('\n-----📈 Empresas 📉-----')
+    sleep(1)
     print('\n 1.🟦 Ver Empresas')
     print(' 2.🟩 Criar Empresas')
     print(' 3.🟧 Editar Empresas')
@@ -148,8 +184,7 @@ def main():
                 case 2:
                     criar_empresas()
                 case 3:
-                    nome = input('Digite o nome da empresa que deseja editar: ')
-                    editar_empresas(nome)
+                    editar_empresas()
                 case 4:
                     nome = input('Digite o nome da empresa que deseja excluir: ')
                     excluir_empresas(nome)
