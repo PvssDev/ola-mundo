@@ -68,7 +68,6 @@ def editar_empresas():
                 sleep(0.5)
                 print(f'6. Senha: {empresa['senha']}')
 
-
                 while not concluido:
                     sleep(1)
                     escolha_edicao = input('\n➡️  Escolha qual opção alterar, exemplo: "nome" ou "contato": ' ).strip().lower()
@@ -102,7 +101,6 @@ def editar_empresas():
                 print(f'{empresa['nome']}')
                 sleep(0.5)
                 
-
 def ver_empresas():
     dados = carregar_empresas()
     concluido = False
@@ -135,28 +133,59 @@ def ver_empresas():
         print('❌  Por que você não tenta?')
         sleep(2)
 
-def excluir_empresas(nome):
+def excluir_empresas():
     dados = carregar_empresas()
+    concluido = 0
+    sleep(1)
+    print('-----📈 Excluir Empresas 📉------')
+    sleep(1)
 
-    for empresa in dados:
-        if empresa['nome'] == nome:
-            print(f'\nEmpresa {empresa['nome']}:')
-            print(f'Nome: {empresa['nome']}, Cnpj: {empresa['cnpj']}, Endereço: {empresa['endereço']}, Gmail: {empresa['gmail']} Contato: {empresa['contato']}, Senha: {empresa['senha']}')
-            escolha = input('\nDeseja realmente excluir essa empresa? [s/n]').lower().strip()
-
-            match escolha:
-                case 's':
-                    dados.remove(empresa)
-                    print('Empresa removida com sucesso')
-                    escrever_empresas(dados)
-                case 'n':
-                    print('Empresa não foi removida')
-            
-            concluido = True
-            break
+    while not concluido:
         concluido = False
-    if concluido == False:
-        print('Não foi possivel encontrar sua empresa!')
+        encontrado = False
+        nome = input('\n➡️  Digite o nome da empresa que deseja excluir: ')
+
+        for empresa in dados:
+            if empresa['nome'] == nome:
+
+                encontrado = True
+                print(f'\n➡️  Empresa {empresa['nome']}:')
+                sleep(0.5)
+                print(f'Nome: {empresa['nome']}, Cnpj: {empresa['cnpj']}, Endereço: {empresa['endereço']}, Gmail: {empresa['gmail']} Contato: {empresa['contato']}, Senha: {empresa['senha']}')
+                sleep(1)
+                escolha = input('\n➡️  Deseja realmente excluir essa empresa? [s/n]: ').lower().strip()
+
+                match escolha:
+                    case 's':
+                        dados.remove(empresa)
+                        sleep(1)
+                        print('\n✅  Empresa removida com sucesso')
+                        escrever_empresas(dados)
+                        concluido = True
+
+                    case 'n':
+                        sleep(1)
+                        print('\n❌  Empresa não foi removida')
+                        sleep(1)
+                        escolha = input('\n➡️  Deseja voltar ao Menu? [s/n]: ').lower().strip()
+
+                        match escolha:
+                            case 's':
+                                concluido = True
+                            
+                            case 'n':
+                                concluido = False
+                
+        if not concluido and not encontrado:
+            print('\n❌  Empresa não encontrada! Tente verificar se o nome foi Digitado corretamente')
+            sleep (1.5)
+            print('\n➡️  Nomes de empresas registradas:\n')
+            sleep(1.5)
+         
+            for empresa in dados:
+                print(f'{empresa['nome']}')
+                sleep(0.5)
+            
 
 def menu():
     sleep(1.5)
@@ -186,12 +215,12 @@ def main():
                 case 3:
                     editar_empresas()
                 case 4:
-                    nome = input('Digite o nome da empresa que deseja excluir: ')
-                    excluir_empresas(nome)
+                    excluir_empresas()
                 case 5:
                     break
                 case __:
-                    print('Opção invalida!')
+                    print('❌  Opção invalida!')
+                    sleep(0.5)
 
         except(ValueError):
             print("opção invalida")
