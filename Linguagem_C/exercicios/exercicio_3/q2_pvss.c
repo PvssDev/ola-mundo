@@ -9,30 +9,28 @@ int main() {
     double media = 0.0;
     
     scanf("%i", &L);
-    getchar();
-    scanf("%c", &T);
+    scanf(" %c", &T);
         
-    for(int j = 0; j < 12; j++) {
-        
-        scanf("%lf", &M[L - 1][j]);
+    for (int i = 0; i < 12; i++) {
+        for (int j = 0; j < 12; j++) {
+            scanf("%lf", &M[i][j]);
+        }
     }
     
     if (T == 'S') {
         for (int j = 0; j < 12; j++) {
-            
-            soma += M[L - 1][j];
+            soma += M[L][j];
         }
-        printf("%.1lf", soma);
-        
+        printf("%.1lf\n", soma);
     }
     
     if (T == 'M') {
         for (int j = 0; j < 12; j++) {
             
-            soma += M[L - 1][j];
+            soma += M[L][j];
         }
-        media = soma/12;
-        printf("%.1lf", media);
+        media = soma/12.0;
+        printf("%.1lf\n", media);
     }
  
     return 0;
