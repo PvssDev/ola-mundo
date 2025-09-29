@@ -1,45 +1,47 @@
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
-
-char verAlpha (char string[], int n) {
-
-    for (int i = 0; i < n; i++) {
-    }
-}
 
 int main() {
-
     int N, quantCasas;
-    char alfabeto[26] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    char codificado [50];
-    char decodificado[50];
+    char codificado[60];
+    char decodificado[60];
+    char alfabeto[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     
-    scanf("%i", &N);
+    if (scanf("%d", &N) != 1) {
+        return 1;
+    }
     
     while (N > 0) {
-        scanf("%s", codificado);
-        scanf("%i", &quantCasas);
+        if (scanf("%s", codificado) != 1) break;
+        if (scanf("%d", &quantCasas) != 1) break;
+        
         N--;
 
-        for (int i = 0; i < strlen(codificado); i++) {
+        int tam = strlen(codificado);
+        for (int i = 0; i < tam; i++) {
+            int letraEncontrada = 0;
+            
             for (int j = 0; j < 26; j++) {
-                
                 if (codificado[i] == alfabeto[j]) {
-
-                    if (j - quantCasas < 0){
-                        decodificado[i] = alfabeto[j - quantCasas + 26];
-
-                    }else{
-                        decodificado[i] = alfabeto[j - quantCasas];
+                    int novaPosicao = j - quantCasas;
+                    if (novaPosicao < 0) {
+                        decodificado[i] = alfabeto[novaPosicao + 26];
+                    } else {
+                        decodificado[i] = alfabeto[novaPosicao % 26];
                     }
+                    letraEncontrada = 1;
+                    break;
                 }
             }
-
-            printf("%c", decodificado[i]);
+            
+            if (!letraEncontrada) {
+                decodificado[i] = codificado[i];
+            }
         }
         
-        printf("\n");
+        decodificado[tam] = '\0';
+        
+        printf("%s\n", decodificado);
     }
     
     return 0;
